@@ -60,6 +60,10 @@ class TorSnake{
 			closeSo();
 		}
 
+		void setSoLoc(string loc){
+			torSocksSoLoc = loc;
+		}
+
 		bool createClient(string host, int port){
 			this->host = host;
 			this->port = port;
