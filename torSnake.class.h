@@ -61,7 +61,17 @@ class TorSnake{
 		}
 
 		void setSoLoc(string loc){
+			closeSo();
 			torSocksSoLoc = loc;
+			openLazy();
+                        _socket = (int(*)(int, int, int))loadSymbol("socket");
+                        _getaddrinfo = (int(*)(const char *, const char *, const struct addrinfo *, struct addrinfo **))loadSymbol("getaddrinfo");
+                        _gethostbyname = (struct hostent *(*)(const char *))loadSymbol("gethostbyname");
+                        _close = (void(*)(int))loadSymbol("close");
+                        _connect = (int(*)(int, const struct sockaddr *, socklen_t))loadSymbol("connect");
+                        _send = (ssize_t(*)(int, const void*, size_t, int))loadSymbol("send");
+                        _recv = (ssize_t(*)(int, void *, size_t, int))loadSymbol("recv");
+
 		}
 
 		bool createClient(string host, int port){

@@ -17,6 +17,8 @@ int main(){
 	size_t responseSize = 1000000;
 
 	TorSnake ts;
+
+	ts.setSoLoc("/usr/lib/x86_64-linux-gnu/torsocks/libtorsocks.so");
 	if(!ts.createClient(host, port)){
 		printf("Failed to create client\n");
 		return 1;
